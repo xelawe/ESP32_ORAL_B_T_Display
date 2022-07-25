@@ -105,27 +105,8 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks
 };
 
 
-void ble_repeat() {
-  Serial.println("Scanning...");
-  pBLEScan->start(0, nullptr, true);
-  //  Serial.print("Devices found: ");
-  //  Serial.println(foundDevices.getCount());
-  Serial.println("Scan done!");
-  pBLEScan->clearResults(); // delete results fromBLEScan buffer to release memory
-}
-
-
-//void ble_repeat1(BLEScanResults result) {
-//  Serial.println("Scanning...");
-//  BLEScanResults foundDevices = pBLEScan->start(scanTime, ble_repeat1, true);
-//  //  Serial.print("Devices found: ");
-//  //  Serial.println(foundDevices.getCount());
-//  Serial.println("Scan done!");
-//  pBLEScan->clearResults(); // delete results fromBLEScan buffer to release memory
-//}
 
 void init_ble() {
-
 
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan(); //create new scan
@@ -134,5 +115,10 @@ void init_ble() {
   pBLEScan->setInterval(100);
   pBLEScan->setWindow(99); // less or equal setInterval value
 
-  ble_repeat();
+  Serial.println("Start Scanning...");
+  pBLEScan->start(0, nullptr, true);
+  //  Serial.print("Devices found: ");
+  //  Serial.println(foundDevices.getCount());
+  Serial.println("Scan started!");
+  pBLEScan->clearResults(); // delete results fromBLEScan buffer to release memory
 }
