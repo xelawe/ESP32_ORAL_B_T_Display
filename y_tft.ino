@@ -1,7 +1,7 @@
 void init_tft( ) {
   tft.begin();
 
-  tft.setRotation(3);
+  tft.setRotation(1);
 
   tft.fillScreen(TFT_BLACK);
 
@@ -17,6 +17,18 @@ void init_tft( ) {
 }
 
 void display_data( ) {
+
+  tft.setCursor(0, 0);
+  switch (oralb_smiley) {
+    case 1:
+      tft.setTextColor(TFT_BLACK, TFT_YELLOW, true);
+      tft.print(":-)");
+      break;
+    default:
+      tft.setTextColor(TFT_WHITE, TFT_BLACK, true);
+      tft.print("   ");
+  }
+
   tft.setTextColor(TFT_WHITE, TFT_BLACK, true);
   tft.setCursor(0, 50);
   tft.print(oralb_mode);
